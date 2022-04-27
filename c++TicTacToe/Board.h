@@ -8,7 +8,8 @@ public:
     int turn;
     int winner;
     bool isGameOver;
-	Board();
+    Board();
+    ~Board();
 	bool MakeMove(int);
 	bool GameOverCheck();
 };

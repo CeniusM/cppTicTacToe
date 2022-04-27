@@ -1,4 +1,5 @@
 #include "Board.h"
+#include "Main.h"
 
 #include <iostream>
 #include <string>
@@ -9,15 +10,7 @@ int main()
 {
     cout << "Hello World!\n";
 
-    cout << "Write your name here" << endl;
-
     string input;
-
-    getline(cin, input);
-
-    cout << "hi " << input << "You will now have to play TicTacToe" << endl;
-
-
     Board* board = new Board;
     int move;
     bool moveSucces;

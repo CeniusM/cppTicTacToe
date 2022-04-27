@@ -24,16 +24,15 @@ public:
         board[move] = player;
         turn++;
 
-        if (GameOverCheck())
-        {
-            winner = player;
-            isGameOver = true;
-            return;
-        }
-
         if (turn == 9)
         {
             winner = 0;
+            isGameOver = true;
+            return;
+        }
+        if (GameOverCheck())
+        {
+            winner = player;
             isGameOver = true;
             return;
         }
@@ -63,7 +62,11 @@ public:
     Board()
     {
     }
-    Board()
+    ~Board()
     {
+        free(board);
     }
+
+private:
+
 };
