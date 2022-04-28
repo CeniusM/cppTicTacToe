@@ -5,68 +5,57 @@
 
 using namespace std;
 
-class Board
+bool Board::MakeMove(int move)
 {
-public:
-    int board[9];
-    int player;
-    int turn;
-    int winner;
-    bool isGameOver;
-    Board();
-    ~Board();
+	if (board[move] != 0 || isGameOver)
+		return false;
 
-    bool MakeMove(int move)
-    {
-        if (board[move] != 0 || isGameOver)
-            return false;
+	board[move] = player;
+	turn++;
 
-        board[move] = player;
-        turn++;
+	if (turn == 9)
+	{
+		winner = 0;
+		isGameOver = true;
+		return true;
+	}
+	if (GameOverCheck())
+	{
+		winner = player;
+		isGameOver = true;
+		return true;
+	}
 
-        if (turn == 9)
-        {
-            winner = 0;
-            isGameOver = true;
-            return;
-        }
-        if (GameOverCheck())
-        {
-            winner = player;
-            isGameOver = true;
-            return;
-        }
+	player ^= 0b11; // change player
+}
 
-        player ^= 0b11; // change player
-    }
+bool Board::GameOverCheck()
+{
+	for (int i = 0; i < 3; i++)
+	{
+		if (board[i] != 0 && board[i] == board[i + 3] && board[i + 3] == board[i + 6])
+			return true;
+		if (board[i * 3] != 0 && board[(i * 3)] == board[(i * 3) + 1] && board[(i * 3) + 1] == board[(i * 3) + 2])
+			return true;
+	}
 
-    bool GameOverCheck()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            if (board[i] != 0 && board[i] == board[i + 3] && board[i + 3] == board[i + 6])
-                return true;
-            if (board[i * 3] != 0 && board[(i * 3)] == board[(i * 3) + 1] && board[(i * 3) + 1] == board[(i * 3) + 2])
-                return true;
-        }
+	if (board[0] != 0 && board[0] == board[4] && board[4] == board[8])
+		return true;
 
-        if (board[0] != 0 && board[0] == board[4] && board[4] == board[8])
-            return true;
+	if (board[2] != 0 && board[2] == board[4] && board[4] == board[6])
+		return true;
 
-        if (board[2] != 0 && board[2] == board[4] && board[4] == board[6])
-            return true;
+	return false;
+}
 
-        return false;
-    }
-
-    Board()
-    {
-    }
-    ~Board()
-    {
-        free(board);
-    }
-
-private:
-
-};
+Board::Board()
+{
+	player = 1;
+	turn = 0;
+	winner = 0;
+	isGameOver = false;
+}
+Board::~Board()
+{
+	//free(board);
+}

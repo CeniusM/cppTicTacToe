@@ -1,5 +1,3 @@
 #pragma once
-class GUI
-{
-};
 
+void PrintBoard(int* board, int* selecktedPiece);
