@@ -2,6 +2,7 @@
 #include "Main.h"
 #include "GUI.h"
 #include "GetKeyStroke.h"
+#include "TTTTest.h"
 
 #include <iostream>
 #include <string>
@@ -11,6 +12,8 @@ using namespace std;
 
 int main()
 {
+    TestTTT();
+
     //KEY_EVENT_RECORD key;
     //for (; ; )
     //{
@@ -31,7 +34,7 @@ int main()
             cout << "It must be a num from and too 0 - 8, and the spot can not be taken" << endl;
 
         getconchar(key);
-        system("CLS");
+//        system("CLS");
 
         switch (key.uChar.AsciiChar)
         {
