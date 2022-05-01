@@ -59,5 +59,5 @@ Board::Board()
 }
 Board::~Board()
 {
-	//free(board);
+	
 }
