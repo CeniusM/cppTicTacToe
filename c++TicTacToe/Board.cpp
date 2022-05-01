@@ -27,6 +27,7 @@ bool Board::MakeMove(int move)
 	}
 
 	player ^= 0b11; // change player
+	return true;
 }
 
 bool Board::GameOverCheck()
