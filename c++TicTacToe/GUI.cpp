@@ -8,6 +8,7 @@ using namespace std;
 
 void PrintBoard(int *board, int *selecktedPiece)
 {
+	gotoxy(0, 0);
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	for (int i = 0; i < 3; i++)
 	{
@@ -28,4 +29,11 @@ void PrintBoard(int *board, int *selecktedPiece)
 		cout << endl;
 	}
 	SetConsoleTextAttribute(hConsole, 10);
+}
+
+void gotoxy(int x, int y)
+{
+	COORD pos = { (short)x, (short)y };
+	HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorPosition(output, pos);
 }
