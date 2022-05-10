@@ -89,15 +89,18 @@ bool Board::MakeMove(int move)
 	}
 
 	player ^= 0b11; // change player
+	return true;
 }
 
 bool Board::GameOverCheck()
 {
+	int j;
 	for (int i = 0; i < 3; i++)
 	{
+		j = i * 3;
 		if (board[i] != 0 && board[i] == board[i + 3] && board[i + 3] == board[i + 6])
 			return true;
-		if (board[i * 3] != 0 && board[(i * 3)] == board[(i * 3) + 1] && board[(i * 3) + 1] == board[(i * 3) + 2])
+		if (board[j] != 0 && board[j] == board[j + 1] && board[j + 1] == board[j + 2])
 			return true;
 	}
 
@@ -121,4 +124,3 @@ Board::~Board()
 {
 	//free(board);
 }
-*/
