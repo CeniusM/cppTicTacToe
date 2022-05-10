@@ -1,0 +1,1 @@
+This is my attempt at making one of the fastest possible tictactoe game engines possble
