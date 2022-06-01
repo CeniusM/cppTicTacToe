@@ -5,7 +5,7 @@
 class Board
 {
 public:
-    int board[9]{};
+    char board[9]{}; // no byte aparenty, just char
     int player = 1;
     int turn = 0;
     int winner = 0;
@@ -13,7 +13,7 @@ public:
 
     bool MakeMove(int move);
 
-    bool GameOverCheck();
+    void GameOverCheck();
 
     Board();
     ~Board();
@@ -22,32 +22,28 @@ private:
 
 };
 
-
-
-
-
-/*
-#pragma once
-
-
-
-class Board
+struct mLL // myLongLongs, what a name
 {
-public:
-    int board[9]{};
-    int player;
-    int turn;
-    int winner;
-    bool isGameOver;
-
-    bool MakeMove(int move);
-
-    bool GameOverCheck();
-
-    Board();
-    ~Board();
-
-private:
-
+    //const static long long row1X = (long long)new int*{ 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    //const static M9DT row1X = M9DT({9,9,9,9,9,9,9,9,9});
+    //const static long long row1XLastByte = 0b1;
+    //M9DT test = (M9DT)0b111111111111111111;
 };
-*/
+
+
+/// <summary>
+/// since the int will be stacktin maby you will be able to compare
+/// this struckt with serten preset varibles to the board array
+/// </summary>
+struct M9DT //My9ByteDataTyepe, what a name
+{
+    int b[9];
+    M9DT()
+    {
+        // since this will be used at startup only i'll just do this crap code
+        for (int i = 0; i < 9; i++)
+        {
+            //b[i] = arr[i];
+        }
+    }
+};

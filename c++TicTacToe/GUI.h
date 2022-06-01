@@ -1,4 +1,4 @@
 #pragma once
 
-void PrintBoard(int* board, int* selecktedPiece);
+void PrintBoard(char* board, int* selecktedPiece);
 void gotoxy(int x, int y);

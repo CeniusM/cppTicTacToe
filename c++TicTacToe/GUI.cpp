@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void PrintBoard(int *board, int *selecktedPiece)
+void PrintBoard(char* board, int *selecktedPiece)
 {
 	gotoxy(0, 0);
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);

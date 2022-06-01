@@ -17,7 +17,8 @@ bool Board::MakeMove(int move)
 		isGameOver = true;
 		return true;
 	}
-	if (GameOverCheck())
+	GameOverCheck();
+	if (isGameOver)
 	{
 		winner = player;
 		isGameOver = true;
@@ -27,26 +28,26 @@ bool Board::MakeMove(int move)
 	player ^= 0b11; // change player
 }
 
-bool Board::GameOverCheck()
+void Board::GameOverCheck() // will just set the isgameover to true so no return needed
 {
-	int j;
-	for (int i = 0; i < 3; i++)
-	{
-		j = i * 3;
-		if (board[i] != 0 && board[i] == board[i + 3] && board[i + 3] == board[i + 6])
-			return true;
-		if (board[j] != 0 && board[j] == board[j + 1] && board[j + 1] == board[j + 2])
-			return true;
-	}
+	// crap, i want to compare board arrayn as a long long so you can just compare the byte to a long
+	// but long long is only 8 bytes and the board has 9, i guess il add an extra if statement in...
 
-	if (board[0] != 0 && board[0] == board[4] && board[4] == board[8])
-		return true;
+	double t = 1231333.412;
+	double f = 0.12312;
 
-	if (board[2] != 0 && board[2] == board[4] && board[4] == board[6])
-		return true;
+	double foo = t * f;
 
-	return false;
+	
+	long long longBoard = (long long)board;
+	// rows
+	//if ((longBoard & mLL::row1X) == mLL::row1X)
+	//{
+	//	//... need to check the last bit as well
+	//
+	//}
 }
+
 
 Board::Board()
 {
@@ -124,3 +125,4 @@ Board::~Board()
 {
 	//free(board);
 }
+*/
