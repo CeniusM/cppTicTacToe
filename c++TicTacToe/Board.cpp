@@ -8,7 +8,7 @@ bool Board::MakeMove(int move)
 	if (board[move] != 0 || isGameOver)
 		return false;
 
-	board[move] = player;
+	//board[move] = player;
 	turn++;
 
 	if (turn == 9)
@@ -33,19 +33,21 @@ void Board::GameOverCheck() // will just set the isgameover to true so no return
 	// crap, i want to compare board arrayn as a long long so you can just compare the byte to a long
 	// but long long is only 8 bytes and the board has 9, i guess il add an extra if statement in...
 
-	double t = 1231333.412;
-	double f = 0.12312;
+	// 8 combinations
 
-	double foo = t * f;
-
+	board[6];
+	board[7];
+	board[8];
 	
-	long long longBoard = (long long)board;
+	unsigned long long longBoard = (unsigned long long) & board; // WHY DOES LONGBOARD KEEP BEING JUNK?
+
 	// rows
-	//if ((longBoard & mLL::row1X) == mLL::row1X)
-	//{
-	//	//... need to check the last bit as well
-	//
-	//}
+	if ((longBoard & TTTLL::row1) == TTTLL::row1 || (longBoard & TTTLL::row2) == TTTLL::row2 || (longBoard & TTTLL::row3) == TTTLL::row3)
+	{
+		isGameOver = true;
+		return;
+	}
+
 }
 
 
