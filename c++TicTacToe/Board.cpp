@@ -8,7 +8,7 @@ bool Board::MakeMove(int move)
 	if (board[move] != 0 || isGameOver)
 		return false;
 
-	//board[move] = player;
+	board[move] = player;
 	turn++;
 
 	if (turn == 9)
@@ -35,17 +35,62 @@ void Board::GameOverCheck() // will just set the isgameover to true so no return
 
 	// 8 combinations
 
-	board[6];
-	board[7];
-	board[8];
-	
-	unsigned long long longBoard = (unsigned long long) & board; // WHY DOES LONGBOARD KEEP BEING JUNK?
+	//board[0] = 2;
+	//board[4] = 2;
+	//board[8] = 2;
 
-	// rows
-	if ((longBoard & TTTLL::row1) == TTTLL::row1 || (longBoard & TTTLL::row2) == TTTLL::row2 || (longBoard & TTTLL::row3) == TTTLL::row3)
+									// is the relly necesary ??, no clue, dont wanna keep trying
+	unsigned long long longBoard = (unsigned long long) *(unsigned long long*) & board[0];
+
+	// need to check 8 place becous long long 1 byte to short
+
+	if (player == 1)
 	{
-		isGameOver = true;
-		return;
+		if (
+			// rows
+			(longBoard & TTTLLX::row1) == TTTLLX::row1 ||
+			(longBoard & TTTLLX::row2) == TTTLLX::row2 ||
+			((longBoard & TTTLLX::row3) == TTTLLX::row3 && board[8] == 1) ||
+
+			// collums
+			(longBoard & TTTLLX::col1) == TTTLLX::col1 ||
+			(longBoard & TTTLLX::col2) == TTTLLX::col2 ||
+			((longBoard & TTTLLX::col3) == TTTLLX::col3 && board[8] == 1) ||
+
+			// diagonal
+			((longBoard & TTTLLX::topLeft) == TTTLLX::topLeft && board[8] == 1) ||
+			(longBoard & TTTLLX::topRght) == TTTLLX::topRght
+			
+			
+			)
+		{
+			isGameOver = true;
+				return;
+		}
+	}
+	else
+	{
+		if (
+			// rows
+			(longBoard & TTTLLY::row1) == TTTLLY::row1 ||
+			(longBoard & TTTLLY::row2) == TTTLLY::row2 ||
+			((longBoard & TTTLLY::row3) == TTTLLY::row3 && board[8] == 2) ||
+
+			// collums
+			(longBoard & TTTLLY::col1) == TTTLLY::col1 ||
+			(longBoard & TTTLLY::col2) == TTTLLY::col2 ||
+			((longBoard & TTTLLY::col3) == TTTLLY::col3 && board[8] == 2) ||
+
+			// diagonal
+			((longBoard & TTTLLY::topLeft) == TTTLLY::topLeft && board[8] == 2) ||
+			(longBoard & TTTLLY::topRght) == TTTLLY::topRght
+			
+
+			)
+		{
+			isGameOver = true;
+			return;
+		}
 	}
 
 }

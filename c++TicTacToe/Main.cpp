@@ -27,6 +27,11 @@ int main()
 	bool moveSucces = true;
 	int selecktedPiece = 0;
 
+	// !!! for debbuging
+	//board->MakeMove(selecktedPiece);
+
+	PrintBoard(board->board, &selecktedPiece);
+
 	while (!board->isGameOver)
 	{
 		if (!moveSucces)
