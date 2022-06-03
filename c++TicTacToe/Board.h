@@ -14,6 +14,7 @@ public:
     bool MakeMove(int move);
 
     void GameOverCheck();
+    bool GameOverCheckOld();
 
     Board();
     ~Board();

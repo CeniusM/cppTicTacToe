@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-	//TestTTT();
+	TestTTTWER();
 
 	//KEY_EVENT_RECORD key;
 	//for (; ; )
