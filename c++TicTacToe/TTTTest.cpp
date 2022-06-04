@@ -11,7 +11,6 @@
 long long Time1()
 {
 	srand(472364878);
-	long long combinations = 0;
 
 	// Record start time
 	auto start = std::chrono::high_resolution_clock::now();
@@ -22,7 +21,6 @@ long long Time1()
 		Board board;
 		while (true)
 		{
-			combinations++;
 			board.MakeMove(rand() % 9);
 			if (board.isGameOver)
 				break;
@@ -45,13 +43,15 @@ long long Time2()
 
 	// GO THROUGH ALLLLLLLLLL THE COMBINATIONS... hopefully...
 
+	int foo = 0;
 	int combinations = 0;
 	for (int i = 0; i < 1000000; i++) // 1m
 	{
+		Board board;
 		combinations = 0;
 		while (true)
 		{
-			rand() % 9;
+			foo = rand() % 9;
 			combinations++;
 			if (combinations > 15)
 				break;
@@ -67,9 +67,18 @@ long long Time2()
 
 void TestTTTWER() // beutifull code <3
 {
-	long long t1 = Time1();
-	long long t2 = Time2();
-	std::cout << t1 - t2 << " milliseconds" << std::endl;
+	unsigned long long value = 0;
+	int reps = 10;
+
+	for (int i = 0; i < reps; i++)
+	{
+		long long t1 = Time1();
+		long long t2 = Time2();
+		value += t1 - t2;
+	}
+	value /= reps;
+
+	std::cout << value << " milliseconds" << std::endl;
 
 	std::cin.get();
 }
