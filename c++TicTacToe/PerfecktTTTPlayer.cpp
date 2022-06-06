@@ -2,7 +2,25 @@
 
 #include "PerfecktTTTPlayer.h"
 
-int GetRandomNotLosingMove(int board[9])
+void TTTPlayer::StartSearch()
 {
-	return 0;
+
+}
+
+void TTTPlayer::SearchMove()
+{
+
+}
+
+int TTTPlayer::GetMove(int board[9])
+{
+	return finalMove;
+}
+
+TTTPlayer::TTTPlayer()
+{
+}
+
+TTTPlayer::~TTTPlayer()
+{
 }
