@@ -5,6 +5,8 @@
 
 using namespace std;
 
+void PrintBoard(char* board);
+
 int main()
 {
     cout << "Hello World!\n";
@@ -15,7 +17,7 @@ int main()
 
     getline(cin, input);
 
-    cout << "hi " << input << "You will now have to play TicTacToe" << endl;
+    cout << "hi " << input << " You will now have to play TicTacToe" << endl;
 
 
     Board* board = new Board;
@@ -55,16 +57,16 @@ int main()
     delete board;
 }
 
-void PrintBoard(int* board)
+void PrintBoard(char* board)
 {
     for (int i = 0; i < 3; i++)
     {
         string output;
         for (int j = 0; j < 3; j++)
         {
-            if (board[i + (j * 3)] == 0)
+            if (board[(i * 3) + j] == 0)
                 output += "[ ]";
-            else if (board[i + (j * 3)] == 1)
+            else if (board[(i * 3) + j] == 1)
                 output += "[X]";
             else
                 output += "[O]";
