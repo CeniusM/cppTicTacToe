@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-	TestTTTWER();
+	//TestTTTWER();
 
 	//KEY_EVENT_RECORD key;
 	//for (; ; )
@@ -21,6 +21,7 @@ int main()
 	//    std::cout << "key: " << key.uChar.AsciiChar
 	//        << " code:  " << key.wVirtualKeyCode << std::endl;
 	//}
+
 	while (true)
 	{
 
