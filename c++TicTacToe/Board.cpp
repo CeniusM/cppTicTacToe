@@ -3,89 +3,67 @@
 #include <iostream>
 #include <string>
 
-bool Board::MakeMove(int move)
+using namespace std;
+
+class Board
 {
-	if (board[move] != 0 || isGameOver)
-		return false;
+public:
+    int board[9];
+    int player;
+    int turn;
+    int winner;
+    bool isGameOver;
+    Board();
+    ~Board();
 
-	board[move] = player;
-	turn++;
+    bool MakeMove(int move)
+    {
+        if (board[move] != 0 || isGameOver)
+            return false;
 
-	if (turn == 9)
-	{
-		winner = 0;
-		isGameOver = true;
-		return true;
-	}
+        board[move] = player;
+        turn++;
 
-	GameOverCheck();
-	if (isGameOver)
-	{
-		winner = player;
-		isGameOver = true;
-		return true;
-	}
+        if (GameOverCheck())
+        {
+            winner = player;
+            isGameOver = true;
+            return;
+        }
 
-	player ^= 0b11; // change player
-	return true;
-}
+        if (turn == 9)
+        {
+            winner = 0;
+            isGameOver = true;
+            return;
+        }
 
-void Board::GameOverCheck()
-{
-	unsigned long long longBoard = (unsigned long long) * (unsigned long long*) & board[0];
+        player ^= 0b11; // change player
+    }
 
-	if (player == 1)
-	{
-		if (
-			// rows
-			(longBoard & TTTLLX::row1) == TTTLLX::row1 ||
-			(longBoard & TTTLLX::row2) == TTTLLX::row2 ||
-			((longBoard & TTTLLX::row3) == TTTLLX::row3 && board[8] == 1) ||
+    bool GameOverCheck()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (board[i] != 0 && board[i] == board[i + 3] && board[i + 3] == board[i + 6])
+                return true;
+            if (board[i * 3] != 0 && board[(i * 3)] == board[(i * 3) + 1] && board[(i * 3) + 1] == board[(i * 3) + 2])
+                return true;
+        }
 
-			// collums
-			(longBoard & TTTLLX::col1) == TTTLLX::col1 ||
-			(longBoard & TTTLLX::col2) == TTTLLX::col2 ||
-			((longBoard & TTTLLX::col3) == TTTLLX::col3 && board[8] == 1) ||
+        if (board[0] != 0 && board[0] == board[4] && board[4] == board[8])
+            return true;
 
-			// diagonal
-			((longBoard & TTTLLX::topLeft) == TTTLLX::topLeft && board[8] == 1) ||
-			(longBoard & TTTLLX::topRght) == TTTLLX::topRght
-			)
-		{
-			isGameOver = true;
-			return;
-		}
-	}
-	else
-	{
-		if (
-			// rows
-			(longBoard & TTTLLY::row1) == TTTLLY::row1 ||
-			(longBoard & TTTLLY::row2) == TTTLLY::row2 ||
-			((longBoard & TTTLLY::row3) == TTTLLY::row3 && board[8] == 2) ||
+        if (board[2] != 0 && board[2] == board[4] && board[4] == board[6])
+            return true;
 
-			// collums
-			(longBoard & TTTLLY::col1) == TTTLLY::col1 ||
-			(longBoard & TTTLLY::col2) == TTTLLY::col2 ||
-			((longBoard & TTTLLY::col3) == TTTLLY::col3 && board[8] == 2) ||
+        return false;
+    }
 
-			// diagonal
-			((longBoard & TTTLLY::topLeft) == TTTLLY::topLeft && board[8] == 2) ||
-			(longBoard & TTTLLY::topRght) == TTTLLY::topRght
-			)
-		{
-			isGameOver = true;
-			return;
-		}
-	}
-}
-
-Board::Board()
-{
-
-}
-
-Board::~Board()
-{
-
-}
+    Board()
+    {
+    }
+    Board()
+    {
+    }
+};
