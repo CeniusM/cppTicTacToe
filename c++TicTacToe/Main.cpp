@@ -1,5 +1,4 @@
 #include "Board.h"
-#include "Main.h"
 #include "GUI.h"
 #include "GetKeyStroke.h"
 #include "TTTTest.h"
@@ -66,10 +65,10 @@ int main()
 				break;
 			}
 
-			PrintBoard(board->board, &selecktedPiece);
-
 			if (key.wVirtualKeyCode == 32)
 				moveSucces = board->MakeMove(selecktedPiece);
+
+			PrintBoard(board->board, &selecktedPiece);
 		}
 
 
