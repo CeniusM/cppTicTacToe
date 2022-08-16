@@ -18,7 +18,7 @@ bool getconchar(KEY_EVENT_RECORD& krec)
         ReadConsoleInput(h, &irec, 1, &cc);
         if (irec.EventType == KEY_EVENT
             && ((KEY_EVENT_RECORD&)irec.Event).bKeyDown
-            )//&& ! ((KEY_EVENT_RECORD&)irec.Event).wRepeatCount )
+            )
         {
             krec = (KEY_EVENT_RECORD&)irec.Event;
             return true;

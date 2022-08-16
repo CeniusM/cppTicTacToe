@@ -1,7 +1,6 @@
 #include "Board.h"
 #include "GUI.h"
 #include "GetKeyStroke.h"
-#include "TTTTest.h"
 
 #include <iostream>
 #include <string>
@@ -11,27 +10,13 @@ using namespace std;
 
 int main()
 {
-	//TestTTTWER();
-
-	//KEY_EVENT_RECORD key;
-	//for (; ; )
-	//{
-	//    getconchar(key);
-	//    std::cout << "key: " << key.uChar.AsciiChar
-	//        << " code:  " << key.wVirtualKeyCode << std::endl;
-	//}
-
 	while (true)
 	{
-
 		KEY_EVENT_RECORD key;
 
 		Board* board = new Board;
 		bool moveSucces = true;
 		int selecktedPiece = 0;
-
-		// !!! for debbuging
-		//board->MakeMove(selecktedPiece);
 
 		PrintBoard(board->board, &selecktedPiece);
 
@@ -41,7 +26,6 @@ int main()
 				cout << "It must be a num from and too 0 - 8, and the spot can not be taken" << endl;
 
 			getconchar(key);
-			//        system("CLS");
 
 			switch (key.uChar.AsciiChar)
 			{

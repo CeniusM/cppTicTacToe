@@ -30,13 +30,7 @@
     <ClCompile Include="GetKeyStroke.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TTTTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Board.cpp">
-      <Filter>Source Files\TicTacToe</Filter>
-    </ClCompile>
-    <ClCompile Include="PerfecktTTTPlayer.cpp">
       <Filter>Source Files\TicTacToe</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,13 +41,7 @@
     <ClInclude Include="GetKeyStroke.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TTTTest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Board.h">
-      <Filter>Header Files\TicTacToe</Filter>
-    </ClInclude>
-    <ClInclude Include="PerfecktTTTPlayer.h">
       <Filter>Header Files\TicTacToe</Filter>
     </ClInclude>
   </ItemGroup>
